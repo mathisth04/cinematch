@@ -18,7 +18,7 @@
 <body>
   <div id="app-container">
     
-    <!-- ÉCRAN 1 : CHOIX DE L'HUMEUR -->
+    <!-- ÉCRAN 1 : CHOIX DE L'HUMEUR & AJOUT -->
     <section id="mood-screen" class="screen active">
       <div class="header">
         <h1>🎬 CinéMatch</h1>
@@ -33,7 +33,32 @@
         <button class="mood-btn" data-genre="Science-Fiction">🚀 Évasion & Sci-Fi</button>
         <button class="mood-btn" data-genre="Drame">🎭 Émotion & Drame</button>
       </div>
+
+      <div class="home-actions">
+        <button id="open-add-modal-btn" class="secondary-btn">➕ Ajouter un film</button>
+      </div>
     </section>
+
+    <!-- POPUP MODAL : AJOUT D'UN FILM -->
+    <div id="add-modal" class="modal-overlay">
+      <div class="modal-content">
+        <h3>Ajouter un film</h3>
+        <form id="add-movie-form">
+          <input type="text" id="custom-title" placeholder="Titre du film *" required>
+          <div class="input-row">
+            <input type="number" id="custom-year" placeholder="Année" min="1900" max="2035">
+            <input type="number" id="custom-rating" placeholder="Note / 10" min="0" max="10" step="0.1">
+          </div>
+          <input type="text" id="custom-poster" placeholder="Lien de l'affiche (URL image)">
+          <input type="text" id="custom-genres" placeholder="Genres séparés par des virgules (ex: Action, Drame) *" required>
+          <textarea id="custom-synopsis" placeholder="Résumé / Synopsis"></textarea>
+          <div class="modal-buttons">
+            <button type="button" id="close-modal-btn" class="cancel-btn">Annuler</button>
+            <button type="submit" class="save-btn">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <!-- ÉCRAN 2 : SWIPE -->
     <section id="swipe-screen" class="screen">
@@ -58,7 +83,10 @@
       <div id="result-card">
         <!-- Résultat injecté en JS -->
       </div>
-      <button id="restart-btn" class="main-btn">Relancer une session</button>
+      <div class="result-actions">
+        <button id="next-rec-btn" class="secondary-btn">🔄 Proposer un autre film</button>
+        <button id="restart-btn" class="main-btn">Relancer une session</button>
+      </div>
     </section>
 
   </div>
