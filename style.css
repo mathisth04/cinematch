@@ -42,7 +42,7 @@ body {
   width: 100%;
   height: 100%;
   flex-direction: column;
-  padding: 20px;
+  padding: 16px 20px;
 }
 
 .screen.active {
@@ -51,29 +51,34 @@ body {
 
 /* Écran Humeur */
 #mood-screen {
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
-  gap: 30px;
 }
 
 .header h1 {
   font-size: 2rem;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: var(--accent-color);
+}
+
+.header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
 }
 
 .mood-grid {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  margin: 15px 0;
 }
 
 .mood-btn {
   background: #252525;
   color: white;
   border: 1px solid #333;
-  padding: 14px;
-  font-size: 1.05rem;
+  padding: 12px;
+  font-size: 1rem;
   border-radius: 12px;
   cursor: pointer;
   transition: background 0.2s, transform 0.1s;
@@ -82,6 +87,103 @@ body {
 .mood-btn:active {
   transform: scale(0.98);
   background: var(--accent-color);
+}
+
+.home-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* Modal Ajout Film */
+.modal-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+  max-width: 360px;
+  border: 1px solid #333;
+}
+
+.modal-content h3 {
+  margin-bottom: 15px;
+  color: var(--accent-color);
+  text-align: center;
+}
+
+#add-movie-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#add-movie-form input,
+#add-movie-form textarea {
+  background: #2b2b2b;
+  border: 1px solid #444;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+#add-movie-form textarea {
+  resize: none;
+  height: 60px;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.input-row input {
+  flex: 1;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.cancel-btn, .save-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: #333;
+  color: var(--text-muted);
+}
+
+.save-btn {
+  background: var(--accent-color);
+  color: white;
 }
 
 /* Écran Swipe */
@@ -110,7 +212,7 @@ body {
 #card-stack {
   position: relative;
   width: 100%;
-  height: 70%;
+  height: 68%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -158,7 +260,6 @@ body {
   color: var(--text-muted);
 }
 
-/* Boutons Actions */
 .action-buttons {
   display: flex;
   gap: 30px;
@@ -196,7 +297,7 @@ body {
 /* Écran Résultat */
 #result-screen {
   text-align: center;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -205,23 +306,26 @@ body {
   border-radius: 16px;
   overflow: hidden;
   width: 90%;
-  max-height: 75%;
+  max-height: 68%;
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
 }
 
 #result-card img {
   width: 100%;
-  height: 280px;
+  height: 250px;
   object-fit: cover;
 }
 
 .result-details {
-  padding: 15px;
+  padding: 12px 15px;
   text-align: left;
 }
 
 .result-details h3 {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
+  font-size: 1.15rem;
 }
 
 .result-details .meta {
@@ -231,20 +335,40 @@ body {
 }
 
 .result-details .synopsis {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.4;
-  max-height: 90px;
+  max-height: 80px;
   overflow-y: auto;
+}
+
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 90%;
+}
+
+.main-btn, .secondary-btn {
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
 }
 
 .main-btn {
   background: var(--accent-color);
   color: white;
-  border: none;
-  padding: 14px 28px;
-  font-size: 1rem;
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
+}
+
+.secondary-btn {
+  background: #2b2b2b;
+  color: white;
+  border: 1px solid #444;
+}
+
+.secondary-btn:active, .main-btn:active {
+  transform: scale(0.98);
 }
