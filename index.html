@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>CinéMatch</title>
+
+  <!-- PWA & iOS Meta Tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CinéMatch">
+  <link rel="apple-touch-icon" href="https://img.icons8.com/color/192/popcorn.png">
+  <link rel="icon" href="https://img.icons8.com/color/192/popcorn.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app-container">
+    
+    <!-- ÉCRAN 1 : CHOIX DE L'HUMEUR -->
+    <section id="mood-screen" class="screen active">
+      <div class="header">
+        <h1>🎬 CinéMatch</h1>
+        <p>Quelle est ton humeur ce soir ?</p>
+      </div>
+
+      <div class="mood-grid">
+        <button class="mood-btn" data-genre="all">🎲 Peu importe / Surprise</button>
+        <button class="mood-btn" data-genre="Comédie">😂 Rire & Détente</button>
+        <button class="mood-btn" data-genre="Action">💥 Adrénaline & Action</button>
+        <button class="mood-btn" data-genre="Horreur">😱 Frissons & Suspense</button>
+        <button class="mood-btn" data-genre="Science-Fiction">🚀 Évasion & Sci-Fi</button>
+        <button class="mood-btn" data-genre="Drame">🎭 Émotion & Drame</button>
+      </div>
+    </section>
+
+    <!-- ÉCRAN 2 : SWIPE -->
+    <section id="swipe-screen" class="screen">
+      <div class="top-bar">
+        <span id="counter">Film 1 / 10</span>
+        <button id="abort-btn">Recommencer</button>
+      </div>
+
+      <div id="card-stack">
+        <!-- Les cartes s'insèrent dynamiquement en JS -->
+      </div>
+
+      <div class="action-buttons">
+        <button id="dislike-btn" class="ctrl-btn dislike">✖</button>
+        <button id="like-btn" class="ctrl-btn like">❤</button>
+      </div>
+    </section>
+
+    <!-- ÉCRAN 3 : RÉSULTAT -->
+    <section id="result-screen" class="screen">
+      <h2>🎉 Ton film idéal ce soir !</h2>
+      <div id="result-card">
+        <!-- Résultat injecté en JS -->
+      </div>
+      <button id="restart-btn" class="main-btn">Relancer une session</button>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(console.error);
+    }
+  </script>
+</body>
+</html>
