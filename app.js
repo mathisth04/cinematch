@@ -13,7 +13,7 @@ const MOVIES_DATABASE = [
   // Action & Aventure
   { id: 9, title: "The Dark Knight", genres: ["Action", "Drame"], rating: 9.0, year: 2008, poster: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg", synopsis: "Batman s'associe au commissaire Gordon et au procureur Harvey Dent pour contrer le machiavélique Joker." },
   { id: 10, title: "Mad Max: Fury Road", genres: ["Action", "Science-Fiction"], rating: 8.1, year: 2015, poster: "https://image.tmdb.org/t/p/w500/8tZYtuWezp8JbcsvHYO0O46tFbo.jpg", synopsis: "Dans un futur post-apocalyptique, Max s'allie à l'impératrice Furiosa pour fuir un tyran et son armée." },
-  { id: 11, title: "Gladiator", genres: ["Action", "Drame"], rating: 8.5, year: 2000, poster: "https://image.tmdb.org/t/p/w500/p0j1Z7FzZ6Xn8b64eH0mXw1Kj3u.jpg", synopsis: "Un général romain trahi devient gladiateur pour venger le meurtre de sa famille et de l'empereur." },
+  { id: 11, title: "Gladiator", genres: ["Action", "Drame"], rating: 8.5, year: 2000, poster: "https://image.tmdb.org/t/p/w500/ehGf5U1mS5Wv8A1wVzR2kXp9q8X.jpg", synopsis: "Un général romain trahi devient gladiateur pour venger le meurtre de sa famille et de l'empereur." },
   { id: 12, title: "John Wick", genres: ["Action", "Thriller"], rating: 7.4, year: 2014, poster: "https://image.tmdb.org/t/p/w500/fZPS29QIiiSshAV4q93neIMXZw5.jpg", synopsis: "Un ancien tueur à gages reprend du service pour traquer les criminels qui lui ont tout pris." },
   { id: 13, title: "Top Gun: Maverick", genres: ["Action", "Drame"], rating: 8.3, year: 2022, poster: "https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg", synopsis: "Après 30 ans de service, Maverick forme un détachement de jeunes diplômés Top Gun pour une mission à haut risque." },
   { id: 14, title: "Le Seigneur des Anneaux : La Communauté de l'Anneau", genres: ["Aventure", "Action"], rating: 8.9, year: 2001, poster: "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg", synopsis: "Un jeune Hobbit hérite d'un anneau maléfique et entreprend un voyage périlleux pour le détruire." },
@@ -43,7 +43,7 @@ const MOVIES_DATABASE = [
   { id: 34, title: "Shutter Island", genres: ["Thriller", "Drame"], rating: 8.2, year: 2010, poster: "https://image.tmdb.org/t/p/w500/kve20tXwUZpu4GUX8l6X7Z4QIEN.jpg", synopsis: "Deux marshals enquêtent sur la disparition mystérieuse d'une patiente dans un hôpital psychiatrique insulaire." },
   { id: 35, title: "Prisoners", genres: ["Thriller", "Drame"], rating: 8.1, year: 2013, poster: "https://image.tmdb.org/t/p/w500/uhviyqnQk1G0eT5q7s6xU2W0M1z.jpg", synopsis: "Un père désespéré prend les choses en main après la disparition inexpliquée de sa fille de six ans." },
   { id: 36, title: "Alien, le huitième passager", genres: ["Horreur", "Science-Fiction"], rating: 8.5, year: 1979, poster: "https://image.tmdb.org/t/p/w500/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg", synopsis: "L'équipage d'un cargo spatial découvre une forme de vie inconnue et redoutable prête à tout pour survivre." },
-
+  
   // Drames & Émotion
   { id: 37, title: "Parasite", genres: ["Drame", "Thriller"], rating: 8.5, year: 2019, poster: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg", synopsis: "Une famille sans emploi infiltre progressivement le quotidien d'une richissime dynastie de Séoul." },
   { id: 38, title: "Oppenheimer", genres: ["Drame"], rating: 8.5, year: 2023, poster: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg", synopsis: "L'histoire du physicien J. Robert Oppenheimer à la tête du projet Manhattan pendant la Seconde Guerre mondiale." },
@@ -66,7 +66,7 @@ const MOVIES_DATABASE = [
   // Grands classiques du cinéma
   { id: 52, title: "Pulp Fiction", genres: ["Thriller", "Comédie"], rating: 8.5, year: 1994, poster: "https://image.tmdb.org/t/p/w500/fIE3lAGcZDV1G6XM5KmuWnNsPp1.jpg", synopsis: "Les destins entremêlés de malfrats, d'un boxeur et de cambrioleurs dans les bas-fonds de Los Angeles." },
   { id: 53, title: "Scarface", genres: ["Action", "Drame"], rating: 8.3, year: 1983, poster: "https://image.tmdb.org/t/p/w500/iQ5z9T2v8pwt2y5W1Q2J7eLq.jpg", synopsis: "Un réfugié cubain sans scrupules s'empare violemment du trafic de drogue à Miami." },
-  { id: 54, title: "Gran Torino", genres: ["Drame"], rating: 8.2, year: 2008, poster: "https://image.tmdb.org/t/p/w500/xswhA0t6W1zQ2Qy8eJ0Q.jpg", synopsis: "Un vétéran de la guerre de Corée solitaire et bourru prend sous son aile un jeune voisin en difficulté." },
+  { id: 54, title: "Gran Torino", genres: ["Drame"], rating: 8.2, year: 2008, poster: "https://image.tmdb.org/t/p/w500/5k7mI0iN9jA9R0lq5P2Y0L7i4pB.jpg", synopsis: "Un vétéran de la guerre de Corée solitaire et bourru prend sous son aile un jeune voisin en difficulté." },
   { id: 55, title: "Drive", genres: ["Action", "Thriller"], rating: 7.8, year: 2011, poster: "https://image.tmdb.org/t/p/w500/602vevufEvEJLhLUG5e5tHnQy4o.jpg", synopsis: "Un cascadeur taciturne servant de chauffeur pour braquages se retrouve traqué par la mafia pour sauver sa voisine." },
   { id: 56, title: "Gone Girl", genres: ["Thriller", "Drame"], rating: 8.1, year: 2014, poster: "https://image.tmdb.org/t/p/w500/qymaJhucquUwjpACXSE9GfZGhOD.jpg", synopsis: "Le jour de leur cinquième anniversaire de mariage, un homme signale la disparition de son épouse et devient le suspect numéro 1." },
   { id: 57, title: "Memento", genres: ["Thriller"], rating: 8.4, year: 2000, poster: "https://image.tmdb.org/t/p/w500/yuNs09hvpHVU1cBTCAk9zJSp2Qy.jpg", synopsis: "Un homme souffrant d'amnésie antérograde utilise des tatouages pour traquer le meurtrier de sa femme." },
@@ -127,7 +127,6 @@ function startSession(filterGenre) {
 function renderCurrentCard() {
   cardStack.innerHTML = '';
   
-  // Vérification de fin de session
   if (currentIndex >= TOTAL_SWIPES || currentIndex >= currentMovies.length) {
     showRecommendation();
     return;
@@ -139,7 +138,7 @@ function renderCurrentCard() {
   const card = document.createElement('div');
   card.className = 'movie-card';
   card.innerHTML = `
-    <img src="${movie.poster}" alt="${movie.title}">
+    <img src="${movie.poster}" alt="${movie.title}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80';">
     <div class="movie-info">
       <h3>${movie.title} (${movie.year})</h3>
       <p>${movie.genres.join(' • ')} — ★ ${movie.rating}/10</p>
@@ -252,8 +251,9 @@ function showRecommendation() {
 
   // Affichage de la carte résultat
   const resultContainer = document.getElementById('result-card');
+  // Dans showRecommendation() :
   resultContainer.innerHTML = `
-    <img src="${bestMovie.poster}" alt="${bestMovie.title}">
+    <img src="${bestMovie.poster}" alt="${bestMovie.title}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80';">
     <div class="result-details">
       <h3>${bestMovie.title} (${bestMovie.year})</h3>
       <div class="meta">${bestMovie.genres.join(' • ')} — Note : ★ ${bestMovie.rating}/10</div>
