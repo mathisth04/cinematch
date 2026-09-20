@@ -177,10 +177,25 @@ function renderCurrentCard() {
   const card = document.createElement('div');
   card.className = 'movie-card';
   card.innerHTML = `
-    <img src="${movie.poster}" alt="${movie.title}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80';">
-    <div class="movie-info">
-      <h3>${movie.title} (${movie.year})</h3>
-      <p>${movie.genres.join(' • ')} — ★ ${movie.rating}/10</p>
+    <div class="card-inner">
+      <!-- Face avant -->
+      <div class="card-front">
+        <img src="${movie.poster}" alt="${movie.title}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80';">
+        <div class="movie-info">
+          <h3>${movie.title} (${movie.year})</h3>
+          <p>${movie.genres.join(' • ')} — ★ ${movie.rating}/10</p>
+          <span class="tap-hint">👆 Touche pour lire le résumé</span>
+        </div>
+      </div>
+      <!-- Face arrière -->
+      <div class="card-back">
+        <div>
+          <h3>${movie.title}</h3>
+          <div class="back-meta">${movie.year} • ${movie.genres.join(', ')} • ★ ${movie.rating}/10</div>
+          <div class="back-synopsis">${movie.synopsis}</div>
+        </div>
+        <div class="back-footer">👆 Touche à nouveau pour voir l'affiche</div>
+      </div>
     </div>
   `;
 
@@ -190,25 +205,43 @@ function renderCurrentCard() {
 
 function attachSwipeEvents(card, movie) {
   let startX = 0;
+  let startY = 0;
   let currentX = 0;
   let isDragging = false;
+  const cardInner = card.querySelector('.card-inner');
 
   const onStart = (e) => {
     isDragging = true;
     startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+    currentX = 0;
   };
 
   const onMove = (e) => {
     if (!isDragging) return;
-    currentX = (e.type.includes('touch') ? e.touches[0].clientX : e.clientX) - startX;
+    const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    currentX = clientX - startX;
     const rotate = currentX * 0.08;
     card.style.transform = `translateX(${currentX}px) rotate(${rotate}deg)`;
   };
 
-  const onEnd = () => {
+  const onEnd = (e) => {
     if (!isDragging) return;
     isDragging = false;
 
+    const endX = e.type.includes('touch') ? (e.changedTouches[0] ? e.changedTouches[0].clientX : startX) : e.clientX;
+    const endY = e.type.includes('touch') ? (e.changedTouches[0] ? e.changedTouches[0].clientY : startY) : e.clientY;
+    
+    // Détection d'un tap (mouvement inférieur à 10px) -> Retourne la carte
+    const deltaX = Math.abs(endX - startX);
+    const deltaY = Math.abs(endY - startY);
+    if (deltaX < 10 && deltaY < 10) {
+      card.style.transform = 'translateX(0) rotate(0)';
+      cardInner.classList.toggle('flipped');
+      return;
+    }
+
+    // Swipe droit (> 100px) ou gauche (< -100px)
     if (currentX > 100) {
       handleChoice(movie, true, card);
     } else if (currentX < -100) {
@@ -218,8 +251,8 @@ function attachSwipeEvents(card, movie) {
     }
   };
 
-  card.addEventListener('touchstart', onStart);
-  card.addEventListener('touchmove', onMove);
+  card.addEventListener('touchstart', onStart, { passive: true });
+  card.addEventListener('touchmove', onMove, { passive: true });
   card.addEventListener('touchend', onEnd);
   card.addEventListener('mousedown', onStart);
   window.addEventListener('mousemove', onMove);
