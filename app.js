@@ -1,6 +1,5 @@
-// Base de données étendue de films (+60 titres variés)
-const MOVIES_DATABASE = [
-  // Science-Fiction & Fantastique
+// Base de données par défaut
+const DEFAULT_MOVIES = [
   { id: 1, title: "Inception", genres: ["Science-Fiction", "Action"], rating: 8.8, year: 2010, poster: "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg", synopsis: "Dom Cobb vole des secrets enfouis au plus profond de l'inconscient pendant la phase de rêve." },
   { id: 2, title: "Interstellar", genres: ["Science-Fiction", "Drame"], rating: 8.6, year: 2014, poster: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg", synopsis: "Une équipe d'explorateurs franchit un trou de ver pour assurer la survie de l'humanité." },
   { id: 3, title: "Matrix", genres: ["Science-Fiction", "Action"], rating: 8.7, year: 1999, poster: "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg", synopsis: "Un pirate informatique découvre la véritable nature de sa réalité et son rôle dans la guerre contre ses contrôleurs." },
@@ -9,8 +8,6 @@ const MOVIES_DATABASE = [
   { id: 6, title: "Premier Contact", genres: ["Science-Fiction", "Drame"], rating: 7.9, year: 2016, poster: "https://image.tmdb.org/t/p/w500/hLudzvGfpi6JlwLnSYrzNpAcuTN.jpg", synopsis: "Une linguiste est recrutée par les militaires pour traduire les communications d'extraterrestres venus sur Terre." },
   { id: 7, title: "Retour vers le futur", genres: ["Science-Fiction", "Comédie"], rating: 8.5, year: 1985, poster: "https://image.tmdb.org/t/p/w500/7lyBcpYB0Qt8gYhXYaEZUNNsQCK.jpg", synopsis: "Marty McFly est renvoyé accidentellement dans le passé, en 1955, à bord d'une DeLorean modifiée." },
   { id: 8, title: "Avatar", genres: ["Science-Fiction", "Action", "Aventure"], rating: 7.6, year: 2009, poster: "https://image.tmdb.org/t/p/w500/kyeqWdyUXW608qlYkRqosgbbJyK.jpg", synopsis: "Un marine paraplégique est envoyé sur Pandora où il se retrouve déchiré entre ses ordres et le peuple Na'vi." },
-
-  // Action & Aventure
   { id: 9, title: "The Dark Knight", genres: ["Action", "Drame"], rating: 9.0, year: 2008, poster: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg", synopsis: "Batman s'associe au commissaire Gordon et au procureur Harvey Dent pour contrer le machiavélique Joker." },
   { id: 10, title: "Mad Max: Fury Road", genres: ["Action", "Science-Fiction"], rating: 8.1, year: 2015, poster: "https://image.tmdb.org/t/p/w500/8tZYtuWezp8JbcsvHYO0O46tFbo.jpg", synopsis: "Dans un futur post-apocalyptique, Max s'allie à l'impératrice Furiosa pour fuir un tyran et son armée." },
   { id: 11, title: "Gladiator", genres: ["Action", "Drame"], rating: 8.5, year: 2000, poster: "https://image.tmdb.org/t/p/w500/ehGf5U1mS5Wv8A1wVzR2kXp9q8X.jpg", synopsis: "Un général romain trahi devient gladiateur pour venger le meurtre de sa famille et de l'empereur." },
@@ -20,8 +17,6 @@ const MOVIES_DATABASE = [
   { id: 15, title: "Inglourious Basterds", genres: ["Action", "Drame"], rating: 8.4, year: 2009, poster: "https://image.tmdb.org/t/p/w500/7sfbEnaARXDD5Km0CZ7D7uc2hvU.jpg", synopsis: "Dans la France occupée, un groupe de soldats juifs américains mène des actions sanglantes contre les nazis." },
   { id: 16, title: "Django Unchained", genres: ["Action", "Drame"], rating: 8.5, year: 2012, poster: "https://image.tmdb.org/t/p/w500/7oWY8vdWW7thTzWh3OKYRkWUlD5.jpg", synopsis: "Un esclave affranchi fait équipe avec un chasseur de primes allemand pour délivrer son épouse retenue par un planteur." },
   { id: 17, title: "Fight Club", genres: ["Drame", "Action"], rating: 8.8, year: 1999, poster: "https://image.tmdb.org/t/p/w500/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg", synopsis: "Un employé de bureau insomniaque et un fabriquant de savon charismatique créent un club de combat clandestin." },
-
-  // Comédies
   { id: 18, title: "SuperGrave", genres: ["Comédie"], rating: 7.6, year: 2007, poster: "https://image.tmdb.org/t/p/w500/ek8e8txUyUwd2BNqj6lFEerJfbq.jpg", synopsis: "Deux lycéens tentent d'acheter de l'alcool pour une fête afin d'impressionner les filles de leur classe." },
   { id: 19, title: "La Cité de la Peur", genres: ["Comédie"], rating: 7.8, year: 1994, poster: "https://image.tmdb.org/t/p/w500/uF63x1x4bNn5jVzN41P1D7rO2Vn.jpg", synopsis: "Un tueur en série sévit pendant le Festival de Cannes, armé d'une faucille et d'un marteau." },
   { id: 20, title: "Le Loup de Wall Street", genres: ["Comédie", "Drame"], rating: 8.2, year: 2013, poster: "https://image.tmdb.org/t/p/w500/34m2tygAYBGqA9MXKhRDtzYd4MR.jpg", synopsis: "L'ascension fulgurante et la chute d'un courtier en bourse mégalomane et fêtard dans les années 90." },
@@ -31,8 +26,6 @@ const MOVIES_DATABASE = [
   { id: 24, title: "Very Bad Trip", genres: ["Comédie"], rating: 7.7, year: 2009, poster: "https://image.tmdb.org/t/p/w500/ulMsceTZZq4jV4P0YhC5p4F1bMh.jpg", synopsis: "Trois amis se réveillent à Las Vegas sans aucun souvenir de la veille et sans le futur marié." },
   { id: 25, title: "OSS 117 : Le Caire, nid d'espions", genres: ["Comédie", "Action"], rating: 7.2, year: 2006, poster: "https://image.tmdb.org/t/p/w500/pE1P9e5Qz1zF1k2jL7eRk3uYQ.jpg", synopsis: "L'agent Hubert Bonisseur de la Bath mène une enquête pleine de maladresses au Caire en 1955." },
   { id: 26, title: "The Truman Show", genres: ["Comédie", "Drame"], rating: 8.2, year: 1998, poster: "https://image.tmdb.org/t/p/w500/vuza0WqY239ISGhDo8Ko63GM5va.jpg", synopsis: "Un agent d'assurances découvre que sa vie entière est une émission de téléréalité filmée à son insu." },
-
-  // Horreur & Thriller intense
   { id: 27, title: "Conjuring", genres: ["Horreur"], rating: 7.5, year: 2013, poster: "https://image.tmdb.org/t/p/w500/wVYREutTvI2tmxr6ujrHT704wGF.jpg", synopsis: "Des enquêteurs paranormaux viennent en aide à une famille terrorisée dans leur ferme isolée." },
   { id: 28, title: "Get Out", genres: ["Horreur", "Thriller"], rating: 7.7, year: 2017, poster: "https://image.tmdb.org/t/p/w500/tFXcEccSQMf3lfhfXKSU9iRBpa3.jpg", synopsis: "Un jeune homme noir découvre l'effroyable secret de la famille de sa petite amie blanche." },
   { id: 29, title: "Hérédité", genres: ["Horreur", "Drame"], rating: 7.3, year: 2018, poster: "https://image.tmdb.org/t/p/w500/p9fmuz2Oj3vxEJ5SZ48qu0xqUOi.jpg", synopsis: "Après la disparition de la grand-mère, une famille voit de sombres secrets ancestraux refaire surface." },
@@ -43,8 +36,6 @@ const MOVIES_DATABASE = [
   { id: 34, title: "Shutter Island", genres: ["Thriller", "Drame"], rating: 8.2, year: 2010, poster: "https://image.tmdb.org/t/p/w500/kve20tXwUZpu4GUX8l6X7Z4QIEN.jpg", synopsis: "Deux marshals enquêtent sur la disparition mystérieuse d'une patiente dans un hôpital psychiatrique insulaire." },
   { id: 35, title: "Prisoners", genres: ["Thriller", "Drame"], rating: 8.1, year: 2013, poster: "https://image.tmdb.org/t/p/w500/uhviyqnQk1G0eT5q7s6xU2W0M1z.jpg", synopsis: "Un père désespéré prend les choses en main après la disparition inexpliquée de sa fille de six ans." },
   { id: 36, title: "Alien, le huitième passager", genres: ["Horreur", "Science-Fiction"], rating: 8.5, year: 1979, poster: "https://image.tmdb.org/t/p/w500/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg", synopsis: "L'équipage d'un cargo spatial découvre une forme de vie inconnue et redoutable prête à tout pour survivre." },
-  
-  // Drames & Émotion
   { id: 37, title: "Parasite", genres: ["Drame", "Thriller"], rating: 8.5, year: 2019, poster: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg", synopsis: "Une famille sans emploi infiltre progressivement le quotidien d'une richissime dynastie de Séoul." },
   { id: 38, title: "Oppenheimer", genres: ["Drame"], rating: 8.5, year: 2023, poster: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg", synopsis: "L'histoire du physicien J. Robert Oppenheimer à la tête du projet Manhattan pendant la Seconde Guerre mondiale." },
   { id: 39, title: "Whiplash", genres: ["Drame"], rating: 8.5, year: 2014, poster: "https://image.tmdb.org/t/p/w500/7fn624j5lj3xTme2SgiLCeuedmO.jpg", synopsis: "Un jeune batteur de jazz intègre un prestigieux conservatoire et subit les méthodes impitoyables de son mentor." },
@@ -54,16 +45,12 @@ const MOVIES_DATABASE = [
   { id: 43, title: "Le Parrain", genres: ["Drame"], rating: 8.7, year: 1972, poster: "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg", synopsis: "Le patriarche vieillissant d'une dynastie criminelle transfère le contrôle de son empire à son fils réticent." },
   { id: 44, title: "Le Pianiste", genres: ["Drame"], rating: 8.5, year: 2002, poster: "https://image.tmdb.org/t/p/w500/2hFvxCCWrTmCYw2BMToPXgjIRvL.jpg", synopsis: "Un brillant pianiste juif polonais lutte pour survivre au cœur du ghetto de Varsovie." },
   { id: 45, title: "Joker", genres: ["Drame", "Thriller"], rating: 8.4, year: 2019, poster: "https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg", synopsis: "À Gotham, Arthur Fleck, un comédien rejeté par la société, bascule progressivement dans la criminalité." },
-
-  // Animation & Univers variés
   { id: 46, title: "Spider-Man: New Generation", genres: ["Action", "Science-Fiction"], rating: 8.4, year: 2018, poster: "https://image.tmdb.org/t/p/w500/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg", synopsis: "Le jeune Miles Morales devient le nouveau Spider-Man et croise les héros arachnéens d'autres dimensions." },
   { id: 47, title: "Le Voyage de Chihiro", genres: ["Aventure", "Fantastique"], rating: 8.5, year: 2001, poster: "https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg", synopsis: "Une fillette pénètre dans un monde surnaturel gouverné par une sorcière où ses parents sont transformés en porcs." },
   { id: 48, title: "Princesse Mononoké", genres: ["Aventure", "Drame"], rating: 8.4, year: 1997, poster: "https://image.tmdb.org/t/p/w500/jHWQE0QJ4y9qR3C4iZlqB2Dq7.jpg", synopsis: "Un jeune prince maudit se retrouve au centre d'un conflit violent entre les dieux de la forêt et les humains." },
   { id: 49, title: "Coco", genres: ["Comédie", "Aventure"], rating: 8.4, year: 2017, poster: "https://image.tmdb.org/t/p/w500/eKi8dIrr8voobbaGzDpe8w0PVbC.jpg", synopsis: "Miguel, passionné de musique, se retrouve mystérieusement propulsé dans le monde coloré des ancêtres." },
   { id: 50, title: "Your Name", genres: ["Drame", "Fantastique"], rating: 8.5, year: 2016, poster: "https://image.tmdb.org/t/p/w500/q719jXXEzOoYaps6babgKnONONX.jpg", synopsis: "Deux adolescents que tout sépare se réveillent régulièrement dans le corps de l'autre à travers le Japon." },
   { id: 51, title: "Ratatouille", genres: ["Comédie"], rating: 8.0, year: 2007, poster: "https://image.tmdb.org/t/p/w500/npHNjld2eh5v4xdz19v268a7L3j.jpg", synopsis: "Un rat gourmet s'associe à un jeune cuisinier timide pour conquérir un prestigieux restaurant parisien." },
-
-  // Grands classiques du cinéma
   { id: 52, title: "Pulp Fiction", genres: ["Thriller", "Comédie"], rating: 8.5, year: 1994, poster: "https://image.tmdb.org/t/p/w500/fIE3lAGcZDV1G6XM5KmuWnNsPp1.jpg", synopsis: "Les destins entremêlés de malfrats, d'un boxeur et de cambrioleurs dans les bas-fonds de Los Angeles." },
   { id: 53, title: "Scarface", genres: ["Action", "Drame"], rating: 8.3, year: 1983, poster: "https://image.tmdb.org/t/p/w500/iQ5z9T2v8pwt2y5W1Q2J7eLq.jpg", synopsis: "Un réfugié cubain sans scrupules s'empare violemment du trafic de drogue à Miami." },
   { id: 54, title: "Gran Torino", genres: ["Drame"], rating: 8.2, year: 2008, poster: "https://image.tmdb.org/t/p/w500/5k7mI0iN9jA9R0lq5P2Y0L7i4pB.jpg", synopsis: "Un vétéran de la guerre de Corée solitaire et bourru prend sous son aile un jeune voisin en difficulté." },
@@ -75,20 +62,73 @@ const MOVIES_DATABASE = [
   { id: 60, title: "La La Land", genres: ["Drame", "Comédie"], rating: 8.0, year: 2016, poster: "https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkVJ00htx.jpg", synopsis: "Au cœur de Los Angeles, une actrice en devenir et un passionné de jazz tentent de concilier amour et ambition." }
 ];
 
-// État de l'application
+// Chargement des films (Base + Ajouts personnalisés du LocalStorage)
+function getMoviesDatabase() {
+  const custom = JSON.parse(localStorage.getItem('custom_movies') || '[]');
+  return [...DEFAULT_MOVIES, ...custom];
+}
+
+// Variables d'état
 let currentMovies = [];
 let currentIndex = 0;
 let genreScores = {};
-const TOTAL_SWIPES = 30; // Nombre de swipes avant recommandation
+let recommendedRankedList = [];
+let currentRecRankIndex = 0;
+const TOTAL_SWIPES = 30;
 
-// Éléments DOM
+// Éléments du DOM
 const moodScreen = document.getElementById('mood-screen');
 const swipeScreen = document.getElementById('swipe-screen');
 const resultScreen = document.getElementById('result-screen');
 const cardStack = document.getElementById('card-stack');
 const counterEl = document.getElementById('counter');
+const addModal = document.getElementById('add-modal');
 
-// Gestion du choix d'humeur
+// Gestion du modal d'ajout de film
+document.getElementById('open-add-modal-btn').addEventListener('click', () => {
+  addModal.classList.add('active');
+});
+
+document.getElementById('close-modal-btn').addEventListener('click', () => {
+  addModal.classList.remove('active');
+});
+
+document.getElementById('add-movie-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const title = document.getElementById('custom-title').value.trim();
+  const year = parseInt(document.getElementById('custom-year').value) || new Date().getFullYear();
+  const rating = parseFloat(document.getElementById('custom-rating').value) || 7.5;
+  let poster = document.getElementById('custom-poster').value.trim();
+  const genresInput = document.getElementById('custom-genres').value.trim();
+  const synopsis = document.getElementById('custom-synopsis').value.trim() || "Aucun résumé renseigné.";
+
+  if (!poster) {
+    poster = 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80';
+  }
+
+  const genres = genresInput.split(',').map(g => g.trim()).filter(g => g.length > 0);
+
+  const newMovie = {
+    id: 'custom_' + Date.now(),
+    title,
+    genres,
+    rating,
+    year,
+    poster,
+    synopsis
+  };
+
+  const stored = JSON.parse(localStorage.getItem('custom_movies') || '[]');
+  stored.push(newMovie);
+  localStorage.setItem('custom_movies', JSON.stringify(stored));
+
+  alert(`"${title}" a été ajouté à votre collection !`);
+  e.target.reset();
+  addModal.classList.remove('active');
+});
+
+// Choix de l'humeur
 document.querySelectorAll('.mood-btn').forEach(button => {
   button.addEventListener('click', (e) => {
     const selectedGenre = e.currentTarget.dataset.genre;
@@ -98,22 +138,21 @@ document.querySelectorAll('.mood-btn').forEach(button => {
 
 function startSession(filterGenre) {
   genreScores = {};
-  
-  // Dupliquer le pool pour ne pas muter la base originale
-  let pool = [...MOVIES_DATABASE];
+  recommendedRankedList = [];
+  currentRecRankIndex = 0;
+
+  const allMovies = getMoviesDatabase();
+  let pool = [...allMovies];
 
   if (filterGenre !== 'all') {
-    // Si l'utilisateur choisit un genre, mettre en avant les films du genre
     pool.sort((a, b) => (b.genres.includes(filterGenre) ? 1 : 0) - (a.genres.includes(filterGenre) ? 1 : 0));
   } else {
-    // Mélange complet et aléatoire (Fisher-Yates)
     for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pool[i], pool[j]] = [pool[j], pool[i]];
     }
   }
 
-  // On sélectionne 30 films pour la session de swipe (le reste servira au résultat)
   currentMovies = pool.slice(0, TOTAL_SWIPES);
   currentIndex = 0;
 
@@ -128,7 +167,7 @@ function renderCurrentCard() {
   cardStack.innerHTML = '';
   
   if (currentIndex >= TOTAL_SWIPES || currentIndex >= currentMovies.length) {
-    showRecommendation();
+    calculateRecommendations();
     return;
   }
 
@@ -170,7 +209,6 @@ function attachSwipeEvents(card, movie) {
     if (!isDragging) return;
     isDragging = false;
 
-    // Seuil de validation du swipe (100px)
     if (currentX > 100) {
       handleChoice(movie, true, card);
     } else if (currentX < -100) {
@@ -189,7 +227,6 @@ function attachSwipeEvents(card, movie) {
 }
 
 function handleChoice(movie, isLiked, cardElement) {
-  // Mise à jour de la pondération par genre
   movie.genres.forEach(genre => {
     genreScores[genre] = (genreScores[genre] || 0) + (isLiked ? 2 : -1);
   });
@@ -206,7 +243,7 @@ function handleChoice(movie, isLiked, cardElement) {
   }, 220);
 }
 
-// Boutons fixes Like / Dislike
+// Boutons de contrôle Like / Dislike
 document.getElementById('like-btn').addEventListener('click', () => {
   const card = document.querySelector('.movie-card');
   if (card && currentMovies[currentIndex]) handleChoice(currentMovies[currentIndex], true, card);
@@ -217,52 +254,62 @@ document.getElementById('dislike-btn').addEventListener('click', () => {
   if (card && currentMovies[currentIndex]) handleChoice(currentMovies[currentIndex], false, card);
 });
 
-// Algorithme de recommandation final
-function showRecommendation() {
+// Calcul de la liste complète ordonnée par affinité
+function calculateRecommendations() {
   swipeScreen.classList.remove('active');
   resultScreen.classList.add('active');
 
-  // Filtrer les films non encore vus pendant la session
+  const allMovies = getMoviesDatabase();
   const viewedIds = new Set(currentMovies.slice(0, currentIndex).map(m => m.id));
-  const unshownMovies = MOVIES_DATABASE.filter(m => !viewedIds.has(m.id));
+  const unshownMovies = allMovies.filter(m => !viewedIds.has(m.id));
 
-  // Si par précaution tous les films ont été swipés, se rabattre sur le meilleur film global
-  const candidates = unshownMovies.length > 0 ? unshownMovies : MOVIES_DATABASE;
+  const candidates = unshownMovies.length > 0 ? unshownMovies : allMovies;
 
-  let bestMovie = candidates[0];
-  let highestScore = -Infinity;
-
-  candidates.forEach(movie => {
+  // Calcul du score pour chaque film candidat
+  const scoredCandidates = candidates.map(movie => {
     let score = 0;
-    
-    // Somme des affinités selon les genres du film
     movie.genres.forEach(g => {
       score += (genreScores[g] || 0);
     });
-
-    // Bonus de note pour valoriser les chefs-d'œuvre
     score += (movie.rating * 0.5);
-
-    if (score > highestScore) {
-      highestScore = score;
-      bestMovie = movie;
-    }
+    return { movie, score };
   });
 
-  // Affichage de la carte résultat
+  // Tri décroissant selon le score calculé
+  scoredCandidates.sort((a, b) => b.score - a.score);
+  recommendedRankedList = scoredCandidates.map(item => item.movie);
+  currentRecRankIndex = 0;
+
+  displayRecommendation(recommendedRankedList[currentRecRankIndex]);
+}
+
+function displayRecommendation(movie) {
+  if (!movie) return;
+
   const resultContainer = document.getElementById('result-card');
-  // Dans showRecommendation() :
   resultContainer.innerHTML = `
-    <img src="${bestMovie.poster}" alt="${bestMovie.title}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80';">
+    <img src="${movie.poster}" alt="${movie.title}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=500&q=80';">
     <div class="result-details">
-      <h3>${bestMovie.title} (${bestMovie.year})</h3>
-      <div class="meta">${bestMovie.genres.join(' • ')} — Note : ★ ${bestMovie.rating}/10</div>
-      <div class="synopsis">${bestMovie.synopsis}</div>
+      <h3>${movie.title} (${movie.year})</h3>
+      <div class="meta">${movie.genres.join(' • ')} — Note : ★ ${movie.rating}/10</div>
+      <div class="synopsis">${movie.synopsis}</div>
     </div>
   `;
 }
 
-// Navigation & Recommencer
+// Proposer le film suivant sans refaire les swipes
+document.getElementById('next-rec-btn').addEventListener('click', () => {
+  if (recommendedRankedList.length === 0) return;
+
+  currentRecRankIndex++;
+  if (currentRecRankIndex >= recommendedRankedList.length) {
+    currentRecRankIndex = 0; // Boucle au début si tous les films ont été passés
+  }
+
+  displayRecommendation(recommendedRankedList[currentRecRankIndex]);
+});
+
+// Boutons de navigation
 document.getElementById('abort-btn').addEventListener('click', () => {
   swipeScreen.classList.remove('active');
   moodScreen.classList.add('active');
